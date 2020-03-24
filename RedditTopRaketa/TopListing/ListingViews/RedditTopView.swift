@@ -14,24 +14,32 @@ struct RedditTopView: View {
     init(viewModel: TopListingViewModel) {
         self.viewModel = viewModel
     }
-    
+        
     var body: some View {
         NavigationView {
-            List {
-                ForEach(viewModel.posts, id: \.id) { post in
-                    NavigationLink(destination: DetailView()) {
-                        RedditPostCell(model: post)
+            ZStack {
+                List {
+                    if (viewModel.state == .error) {
+                        Text("Something went wrong, try to refresh")
+                            .foregroundColor(Color.red)
+                    }
+                    ForEach(viewModel.posts, id: \.id) { post in
+                        NavigationLink(destination: DetailView()) {
+                            RedditPostCell(model: post)
+                        }
+                    }
+                    Button(action: viewModel.fetchNextListing) {
+                        LoadNextButtonContent()
                     }
                 }
-                Button(action: viewModel.fetchNextListing) {
-                    LoadNextButtonContent()
+                if (viewModel.state == .fetching) {
+                    BlockingSpinnerView()
                 }
             }
             .navigationBarTitle("Top of the  Reddit")
             .navigationBarItems(trailing: Button(action: viewModel.refresh) {
                 RefreshButtonContent()
             })
-            
         }.onAppear(perform: viewModel.fetchNextListing)
         
     }

@@ -47,8 +47,8 @@ class TopListingViewModel: ObservableObject {
             .sink(receiveCompletion: { [weak self] (completion) in
                 guard let self = self else { return }
                 switch completion {
-                case .failure(let error):
-                    self.state = .error(error: error)
+                case .failure:
+                    self.state = .error
                 case .finished:
                     self.state = .none
                 }

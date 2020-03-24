@@ -11,5 +11,5 @@ import Foundation
 enum ServicingState {
     case none
     case fetching
-    case error(error: Error)
+    case error
 }
