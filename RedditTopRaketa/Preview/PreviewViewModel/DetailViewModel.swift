@@ -17,7 +17,6 @@ class DetailViewModel: ObservableObject {
     init(mediaURL: URL?, author: String) {
         self.mediaURL = mediaURL
         self.author = author
-        print("\(mediaURL)")
     }
     
     func share() {

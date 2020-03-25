@@ -16,6 +16,7 @@ struct PostCellModel: Identifiable {
     let title: String
     let author: String
     let created: String
+    let comments: Int
     let thumbnailUrl: URL?
     let previewUrl: URL?
     
@@ -29,6 +30,7 @@ struct PostCellModel: Identifiable {
         self.author = dto.author
         self.created = dto.created.sinceString()
         self.thumbnailUrl = dto.thumbnail
+        self.comments = dto.numComments
         self.previewUrl = dto.preview?.images?.first?.sourceURL
     }
 }

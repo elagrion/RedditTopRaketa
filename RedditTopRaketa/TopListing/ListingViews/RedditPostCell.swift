@@ -33,6 +33,8 @@ struct RedditPostCell: View {
                     Text(model.created)
                         .font(.footnote)
                 }
+                Text("comments: \(model.comments)")
+                    .font(.footnote)
             }
         }
     }
