@@ -11,15 +11,16 @@ import SwiftUI
 
 struct URLImageView : View {
 
-    @ObservedObject private var loader: ImageFetcher
+    @ObservedObject private var loader = ImageFetcher()
+    private let url: URL
     
     init(url: URL) {
-        loader = ImageFetcher(url: url)
+        self.url = url
     }
 
     var body: some View {
         image
-            .onAppear(perform: loader.fetchImage)
+            .onAppear(perform: { self.loader.fetchImage(url: self.url) })
             .onDisappear(perform: loader.cancel)
     }
     
@@ -29,6 +30,8 @@ struct URLImageView : View {
                 Image(uiImage: loader.image!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+            } else if loader.state == .error {
+                Image(systemName: "xmark.octagon")
             } else {
                 Image(systemName: "photo")
             }

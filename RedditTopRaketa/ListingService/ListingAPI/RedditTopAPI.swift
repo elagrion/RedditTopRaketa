@@ -33,8 +33,10 @@ extension RedditListingAPI: NetworkAPI {
     var queryParams: [String : String]? {
         switch self {
         case .top(let after):
-            guard let after = after else { return nil }
-            return ["after": after]
+            var dict = ["raw_json": "1"]
+            guard let after = after else { return dict }
+            dict["after"] = after
+            return dict
         }
     }
 }

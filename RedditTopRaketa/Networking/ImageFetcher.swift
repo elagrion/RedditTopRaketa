@@ -10,24 +10,40 @@ import Foundation
 import Combine
 import UIKit
 
-class ImageFetcher: ObservableObject {
+protocol ImageFetching {
+    var imagePublisher: AnyPublisher<UIImage?, Never> { get }
+    var statePublisher: AnyPublisher<ServicingState, Never> { get }
     
-    @Published var image: UIImage?
-    private let url: URL
+    func fetchImage(url: URL)
+    func cancel()
+}
+
+class ImageFetcher: ImageFetching, ObservableObject {
+    
+    @Published private(set) var image: UIImage?
+    @Published private(set) var state = ServicingState.none
+    var imagePublisher: AnyPublisher<UIImage?, Never> { $image.eraseToAnyPublisher() }
+    var statePublisher: AnyPublisher<ServicingState, Never> { $state.eraseToAnyPublisher() }
     
     private var cancellable: AnyCancellable?
-    
-    init(url: URL) {
-        self.url = url
-    }
-    
-    func fetchImage() {
+        
+    func fetchImage(url: URL) {
+        state = .fetching
         cancellable = URLSession.shared.dataTaskPublisher(for: url)
             .map { UIImage(data: $0.data) }
-            .replaceError(with: nil)
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
-            .assign(to: \.image, on: self)
+            .sink(receiveCompletion: {[weak self] (result) in
+                switch result {
+                case .failure(let error):
+                    print("ImageFetcher loading \(url) \n error: \(error)")
+                    self?.state = .error
+                case .finished:
+                    break
+                }
+            }, receiveValue: {[weak self] (value) in
+                self?.image = value
+            })
     }
     
     func cancel() {

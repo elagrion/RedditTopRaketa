@@ -10,11 +10,11 @@ import Foundation
 
 typealias ListingId = String
 
-struct ListingDTO: Codable {
+struct ListingDTO: Decodable {
     let data: ListingDTOData
 }
 
-struct ListingDTOData: Codable {
+struct ListingDTOData: Decodable {
     let children: [PostDTO]
     
     let after: ListingId?

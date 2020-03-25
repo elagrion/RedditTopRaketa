@@ -16,29 +16,19 @@ struct PostCellModel: Identifiable {
     let title: String
     let author: String
     let created: String
-    let imageUrl: URL?
-        
+    let thumbnailUrl: URL?
+    let previewUrl: URL?
+    
+    var previewAvailible: Bool {
+        previewUrl != nil
+    }
+    
     init(dto: PostDTOData) {
         self.id = dto.id
         self.title = dto.title
         self.author = dto.author
         self.created = dto.created.sinceString()
-        self.imageUrl = dto.thumbnail
+        self.thumbnailUrl = dto.thumbnail
+        self.previewUrl = dto.preview?.images?.first?.sourceURL
     }
-    
-//    func fetchImage() {
-//        ImageFetcher().fetchImage(imageUrl)
-//            .store(in: &disposeBag)
-//    }
-//
-//    func cancel() {
-//        disposeBag = Set()
-//    }
 }
-
-//extension PostCellModel: Hashable {
-//    static func == (lhs: PostCellModel, rhs: PostCellModel) -> Bool {
-//        lhs.id == rhs.id
-//    }
-//
-//}

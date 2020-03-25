@@ -8,20 +8,20 @@
 
 import Foundation
 
-struct PostDTO: Codable {
+struct PostDTO: Decodable {
     let data: PostDTOData
 }
 
-struct PostDTOData: Codable {
+struct PostDTOData: Decodable {
     let title: String
     let author: String
     let created: Date
     
     let name: ListingId
     
-    let thumbnail_height: Int?
-    let thumbnail_width: Int?
     let thumbnail: URL?
+    
+    let preview: PreviewDTO?
 }
 
 extension PostDTOData: Identifiable {

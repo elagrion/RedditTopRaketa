@@ -14,55 +14,67 @@ struct RedditTopView: View {
     init(viewModel: TopListingViewModel) {
         self.viewModel = viewModel
     }
-        
+    
     var body: some View {
         NavigationView {
             ZStack {
                 List {
                     if (viewModel.state == .error) {
-                        Text("Something went wrong, try to refresh")
-                            .foregroundColor(Color.red)
+                        errorCell
                     }
-                    ForEach(viewModel.posts, id: \.id) { post in
-                        NavigationLink(destination: DetailView()) {
-                            RedditPostCell(model: post)
-                        }
-                    }
-                    Button(action: viewModel.fetchNextListing) {
-                        LoadNextButtonContent()
-                    }
+                    cellList
+                    loadNextButton
                 }
                 if (viewModel.state == .fetching) {
                     BlockingSpinnerView()
                 }
             }
             .navigationBarTitle("Top of the  Reddit")
-            .navigationBarItems(trailing: Button(action: viewModel.refresh) {
-                RefreshButtonContent()
-            })
+            .navigationBarItems(trailing: refreshButton)
         }.onAppear(perform: viewModel.fetchNextListing)
         
     }
-}
-
-struct LoadNextButtonContent: View {
-    var body: some View {
-        HStack {
-            Text("Load next posts")
-            Image(systemName: "forward.fill")
+    
+    private var cellList: some View {
+        ForEach(viewModel.posts, id: \.id) { post in
+            self.cell(for: post)
         }
-        .accentColor(Color.blue)
+    }
+    
+    private func cell(for post: PostCellModel) -> AnyView {
+        if post.previewAvailible {
+            return AnyView(NavigationLink(destination: Assembly.shared.detailView(post: post)) {
+                RedditPostCell(model: post)
+            })
+        } else {
+            return AnyView(RedditPostCell(model: post))
+        }
+    }
+    
+    private var refreshButton: some View {
+        Button(action: viewModel.refresh) {
+            HStack {
+                Text("Refresh")
+                    .fontWeight(.bold)
+            }
+        }
+    }
+    
+    private var loadNextButton: some View {
+        Button(action: viewModel.fetchNextListing) {
+            HStack {
+                Text("Load next posts")
+                Image(systemName: "forward")
+            }
+        }
+    }
+        
+    private var errorCell: some View {
+        Text("Something went wrong, try to refresh")
+            .foregroundColor(Color.red)
     }
 }
 
-struct RefreshButtonContent: View {
-    var body: some View {
-        HStack {
-            Image(systemName: "gobackward")
-            Text("Refresh")
-        }
-    }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

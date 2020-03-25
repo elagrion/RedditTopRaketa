@@ -18,5 +18,10 @@ class Assembly {
         RedditTopView(viewModel: TopListingViewModel(fetching: TopListingFetch(network: networkAgent)))
     }
     
+    func detailView(post: PostCellModel) -> DetailView {
+        DetailView(viewModel: DetailViewModel(mediaURL: post.previewUrl, author: post.author))
+    }
+
+    
     
 }

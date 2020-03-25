@@ -38,7 +38,7 @@ struct RedditPostCell: View {
     }
     
     func imageView() -> AnyView {
-        if let url = model.imageUrl {
+        if let url = model.thumbnailUrl {
             return AnyView(
                 URLImageView(url: url)
                     .frame(width: Consts.imageWidth, height: Consts.imageHeight, alignment: .center)
