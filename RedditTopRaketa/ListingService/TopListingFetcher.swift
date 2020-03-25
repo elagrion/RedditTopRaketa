@@ -13,7 +13,7 @@ protocol TopListingFetching {
     func fetchListing(after: ListingId?) -> AnyPublisher<ListingDTO, Error>
 }
 
-class TopListingFetch: TopListingFetching {
+class TopListingFetcher: TopListingFetching {
     private let network: NetworkAgenting
     
     init(network: NetworkAgenting) {

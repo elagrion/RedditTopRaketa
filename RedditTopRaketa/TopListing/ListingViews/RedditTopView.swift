@@ -31,7 +31,7 @@ struct RedditTopView: View {
             }
             .navigationBarTitle("Top of the  Reddit")
             .navigationBarItems(trailing: refreshButton)
-        }.onAppear(perform: viewModel.fetchNextListing)
+        }.onAppear(perform: viewModel.onAppear)
         
     }
     
@@ -52,7 +52,7 @@ struct RedditTopView: View {
     }
     
     private var refreshButton: some View {
-        Button(action: viewModel.refresh) {
+        Button(action: viewModel.onRefresh) {
             HStack {
                 Text("Refresh")
                     .fontWeight(.bold)
@@ -61,7 +61,7 @@ struct RedditTopView: View {
     }
     
     private var loadNextButton: some View {
-        Button(action: viewModel.fetchNextListing) {
+        Button(action: viewModel.onFetchNextListing) {
             HStack {
                 Text("Load next posts")
                 Image(systemName: "forward")
@@ -78,6 +78,6 @@ struct RedditTopView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        RedditTopView(viewModel: TopListingViewModel(fetching: TopListingFetch(network: NetworkAgent())))
+        RedditTopView(viewModel: TopListingViewModel(fetcher: TopListingFetcher(network: NetworkAgent())))
     }
 }

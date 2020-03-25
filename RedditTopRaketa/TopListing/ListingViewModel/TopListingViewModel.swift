@@ -16,11 +16,11 @@ class TopListingViewModel: ObservableObject {
     @Published private(set) var posts = [PostCellModel]()
     @Published private(set) var state = ServicingState.none
     
-    private let fetching: TopListingFetching
+    private let fetcher: TopListingFetching
     private var disposeBag = Set<AnyCancellable>()
     
-    init(fetching: TopListingFetching) {
-        self.fetching = fetching
+    init(fetcher: TopListingFetching) {
+        self.fetcher = fetcher
         bindOutputs()
     }
     
@@ -35,15 +35,19 @@ class TopListingViewModel: ObservableObject {
             .store(in: &disposeBag)
     }
     
-    func refresh() {
+    func onAppear() {
+        onFetchNextListing()
+    }
+    
+    func onRefresh() {
         listingsSource = []
-        fetchNextListing()
+        onFetchNextListing()
     }
 
-    func fetchNextListing() {
+    func onFetchNextListing() {
         let after  = listingsSource.last?.data.after
         state = .fetching
-        fetching.fetchListing(after: after)
+        fetcher.fetchListing(after: after)
             .sink(receiveCompletion: { [weak self] (completion) in
                 guard let self = self else { return }
                 switch completion {

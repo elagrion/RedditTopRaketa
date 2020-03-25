@@ -19,21 +19,25 @@ struct DetailView: View {
     var body: some View {
         Group {
             preview()
+            if viewModel.showSharing {
+                ActivityViewController(image: viewModel.image, completion: viewModel.onEndShare)
+            }
         }
+        .onAppear(perform: viewModel.onAppear)
         .navigationBarTitle(viewModel.author)
         .navigationBarItems(trailing: saveButton)
     }
     
     private func preview() -> AnyView {
-        guard let url = viewModel.mediaURL else {
+        guard let image = viewModel.image else {
             return AnyView(Text("No preview availible"))
         }
-        return AnyView(URLImageView(url: url)
+        return AnyView(Image(uiImage: image)
                 .aspectRatio(contentMode: .fit))
     }
     
     private var saveButton: some View {
-        Button(action: viewModel.share) {
+        Button(action: viewModel.onShare) {
             Image(systemName: "square.and.arrow.up")
         }
     }

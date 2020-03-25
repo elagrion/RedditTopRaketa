@@ -10,6 +10,7 @@
 		A434EA55242A705B006E4B82 /* BlockingSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A434EA54242A705B006E4B82 /* BlockingSpinnerView.swift */; };
 		A434EA57242A7380006E4B82 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A434EA56242A7380006E4B82 /* DetailViewModel.swift */; };
 		A434EA59242A79E2006E4B82 /* PreviewDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A434EA58242A79E2006E4B82 /* PreviewDTO.swift */; };
+		A4890D51242B3B6D00B54C90 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4890D50242B3B6D00B54C90 /* ActivityViewController.swift */; };
 		A4EF94FB2428B5C30085DC1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EF94FA2428B5C30085DC1F /* AppDelegate.swift */; };
 		A4EF94FD2428B5C30085DC1F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EF94FC2428B5C30085DC1F /* SceneDelegate.swift */; };
 		A4EF94FF2428B5C30085DC1F /* RedditTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EF94FE2428B5C30085DC1F /* RedditTopView.swift */; };
@@ -24,7 +25,7 @@
 		A4EF951B2429D3F70085DC1F /* ListingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EF951A2429D3F70085DC1F /* ListingDTO.swift */; };
 		A4EF951D2429E5190085DC1F /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EF951C2429E5190085DC1F /* PostDTO.swift */; };
 		A4EF951F2429F7740085DC1F /* ServicingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EF951E2429F7740085DC1F /* ServicingState.swift */; };
-		A4EF95212429F7FA0085DC1F /* TopListingFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EF95202429F7FA0085DC1F /* TopListingFetch.swift */; };
+		A4EF95212429F7FA0085DC1F /* TopListingFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EF95202429F7FA0085DC1F /* TopListingFetcher.swift */; };
 		A4EF95252429FF280085DC1F /* PostCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EF95242429FF280085DC1F /* PostCellModel.swift */; };
 		A4EF9528242A06D80085DC1F /* DateSince.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EF9527242A06D80085DC1F /* DateSince.swift */; };
 		A4EF952A242A10A40085DC1F /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EF9529242A10A40085DC1F /* ImageFetcher.swift */; };
@@ -39,6 +40,7 @@
 		A434EA54242A705B006E4B82 /* BlockingSpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockingSpinnerView.swift; sourceTree = "<group>"; };
 		A434EA56242A7380006E4B82 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		A434EA58242A79E2006E4B82 /* PreviewDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDTO.swift; sourceTree = "<group>"; };
+		A4890D50242B3B6D00B54C90 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		A4EF94F72428B5C30085DC1F /* RedditTopRaketa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedditTopRaketa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4EF94FA2428B5C30085DC1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4EF94FC2428B5C30085DC1F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,7 +57,7 @@
 		A4EF951A2429D3F70085DC1F /* ListingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingDTO.swift; sourceTree = "<group>"; };
 		A4EF951C2429E5190085DC1F /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
 		A4EF951E2429F7740085DC1F /* ServicingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicingState.swift; sourceTree = "<group>"; };
-		A4EF95202429F7FA0085DC1F /* TopListingFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListingFetch.swift; sourceTree = "<group>"; };
+		A4EF95202429F7FA0085DC1F /* TopListingFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListingFetcher.swift; sourceTree = "<group>"; };
 		A4EF95242429FF280085DC1F /* PostCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellModel.swift; sourceTree = "<group>"; };
 		A4EF9527242A06D80085DC1F /* DateSince.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSince.swift; sourceTree = "<group>"; };
 		A4EF9529242A10A40085DC1F /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
@@ -135,7 +137,7 @@
 		A4EF95192429D3D40085DC1F /* ListingService */ = {
 			isa = PBXGroup;
 			children = (
-				A4EF95202429F7FA0085DC1F /* TopListingFetch.swift */,
+				A4EF95202429F7FA0085DC1F /* TopListingFetcher.swift */,
 				A4EF951E2429F7740085DC1F /* ServicingState.swift */,
 				A4EF95222429F8590085DC1F /* ListingAPI */,
 			);
@@ -176,6 +178,7 @@
 				A4EF952C242A384B0085DC1F /* URLImageView.swift */,
 				A4EF952E242A38770085DC1F /* ActivityIndicator.swift */,
 				A434EA54242A705B006E4B82 /* BlockingSpinnerView.swift */,
+				A4890D50242B3B6D00B54C90 /* ActivityViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				A4EF94FB2428B5C30085DC1F /* AppDelegate.swift in Sources */,
 				A4EF95162428C35E0085DC1F /* NetworkAPI.swift in Sources */,
 				A4EF95122428BC630085DC1F /* NetworkAgent.swift in Sources */,
+				A4890D51242B3B6D00B54C90 /* ActivityViewController.swift in Sources */,
 				A4EF94FD2428B5C30085DC1F /* SceneDelegate.swift in Sources */,
 				A4EF950F2428BAE70085DC1F /* TopListingViewModel.swift in Sources */,
 				A4EF95252429FF280085DC1F /* PostCellModel.swift in Sources */,
@@ -306,7 +310,7 @@
 				A434EA57242A7380006E4B82 /* DetailViewModel.swift in Sources */,
 				A4EF951B2429D3F70085DC1F /* ListingDTO.swift in Sources */,
 				A4EF952A242A10A40085DC1F /* ImageFetcher.swift in Sources */,
-				A4EF95212429F7FA0085DC1F /* TopListingFetch.swift in Sources */,
+				A4EF95212429F7FA0085DC1F /* TopListingFetcher.swift in Sources */,
 				A434EA59242A79E2006E4B82 /* PreviewDTO.swift in Sources */,
 				A4EF951D2429E5190085DC1F /* PostDTO.swift in Sources */,
 				A4EF95182429D1D80085DC1F /* URLRequestFactory.swift in Sources */,

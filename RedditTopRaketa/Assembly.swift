@@ -15,13 +15,12 @@ class Assembly {
     let networkAgent = NetworkAgent()
     
     func redditTopView() -> RedditTopView {
-        RedditTopView(viewModel: TopListingViewModel(fetching: TopListingFetch(network: networkAgent)))
+        RedditTopView(viewModel: TopListingViewModel(fetcher: TopListingFetcher(network: networkAgent)))
     }
     
     func detailView(post: PostCellModel) -> DetailView {
-        DetailView(viewModel: DetailViewModel(mediaURL: post.previewUrl, author: post.author))
-    }
-
-    
-    
+        DetailView(viewModel: DetailViewModel(mediaURL: post.previewUrl,
+                                              author: post.author,
+                                              imagerFetcher: ImageFetcher()))
+    }    
 }
