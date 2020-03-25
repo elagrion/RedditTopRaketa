@@ -31,7 +31,9 @@ struct RedditTopView: View {
             }
             .navigationBarTitle("Top of the  Reddit")
             .navigationBarItems(trailing: refreshButton)
-        }.onAppear(perform: viewModel.onAppear)
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear(perform: viewModel.onAppear)
         
     }
     
